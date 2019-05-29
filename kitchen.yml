@@ -8,9 +8,6 @@ provisioner:
   product_name: chef
   product_version: 14.12.9
   log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
-  client_rb:
-    'data_collector.server_url': https://ec2-13-210-69-188.ap-southeast-2.compute.amazonaws.com/data-collector/v0/
-    'data_collector.token': God3ytMQm6w4QbbdrFJGyEvEFZY=
 
 verifier:
   name: inspec

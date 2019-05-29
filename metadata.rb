@@ -1,22 +1,15 @@
-name 'audit-artifactory'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+name 'audit-artifactory' # ~FC078
+maintainer 'Matt Ray'
+maintainer_email 'matt@chef.io'
 license 'All Rights Reserved'
 description 'Installs/Configures audit-artifactory'
 long_description 'Installs/Configures audit-artifactory'
 version '0.1.0'
-chef_version '>= 14.0'
+chef_version '>= 14.0' if respond_to?(:chef_version)
 
 depends 'audit', '~> 7.6.0'
 
-# The `issues_url` points to the location where issues for this cookbook are
-# tracked.  A `View Issues` link will be displayed on this cookbook's page when
-# uploaded to a Supermarket.
-#
-# issues_url 'https://github.com/<insert_org_here>/audit-artifactory/issues'
+issues_url       'https://github.com/chef-cookbooks/testsomething/issues'
+source_url       'https://github.com/chef-cookbooks/testsomething'
 
-# The `source_url` points to the development repository for this cookbook.  A
-# `View Source` link will be displayed on this cookbook's page when uploaded to
-# a Supermarket.
-#
-# source_url 'https://github.com/<insert_org_here>/audit-artifactory'
+supports         'redhat'

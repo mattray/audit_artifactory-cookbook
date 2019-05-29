@@ -36,5 +36,5 @@ action :install do
   end
 
   # add the local file to the audit cookbook
-  puts "node.default['audit']['profiles'][#{artifact}]['path'] = #{Chef::Config['file_cache_path']}/audit-artifactory/#{artifact}-#{version}.tgz"
+  node.default['audit']['profiles'][artifact] = { 'path' => "#{Chef::Config['file_cache_path']}/audit-artifactory/#{artifact}-#{version}.tgz" }
 end

@@ -13,7 +13,6 @@ node['audit-artifactory']['profiles'].keys.each do |name|
     base_url profile['base_url']
     group profile['group']
     repo profile['repo']
-    artifact profile['artifact']
     version version
   end
 end

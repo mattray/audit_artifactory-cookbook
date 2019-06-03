@@ -19,7 +19,10 @@ action :install do
   # get the version of the latest
   if version.eql?('latest')
     url = "#{base_url}/api/search/latestVersion?g=#{group}&a=#{artifact}&repos=#{repo}"
-    version = Net::HTTP.get_response(URI.parse(url)).body
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    version = Net::HTTP.get_response(uri).body
   end
 
   file_url = "#{base_url}/#{repo}/#{group}/#{artifact}/#{artifact}-#{version}.tgz"

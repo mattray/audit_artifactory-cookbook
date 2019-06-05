@@ -9,6 +9,7 @@ property :version, String, default: 'latest'
 action :install do
   require 'net/http'
   require 'uri'
+  require 'openssl'
 
   artifact = new_resource.artifact
   base_url = new_resource.base_url
@@ -21,6 +22,7 @@ action :install do
     url = "#{base_url}/api/search/latestVersion?g=#{group}&a=#{artifact}&repos=#{repo}"
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = uri.scheme == 'https'
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     version = Net::HTTP.get_response(uri).body
   end

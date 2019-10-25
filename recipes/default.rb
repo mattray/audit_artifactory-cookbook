@@ -1,5 +1,5 @@
 #
-# Cookbook:: audit-artifactory
+# Cookbook:: audit_artifactory
 # Recipe:: default
 #
 

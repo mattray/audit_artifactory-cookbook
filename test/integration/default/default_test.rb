@@ -1,4 +1,4 @@
-# InSpec test for recipe audit-artifactory::default
+# InSpec test for recipe audit_artifactory::default
 
 # The InSpec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/

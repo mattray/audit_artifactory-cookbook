@@ -26,7 +26,7 @@ suites:
         reporter: json-file
         json_file:
           location: /tmp/test/15versioned-centos-report.json
-      audit-artifactory:
+      audit_artifactory:
         cache_dir: /tmp/test
         profiles:
           uptime-profile:
@@ -48,7 +48,7 @@ suites:
         reporter: json-file
         json_file:
           location: /tmp/test/15latest-centos-report.json
-      audit-artifactory:
+      audit_artifactory:
         cache_dir: /tmp/test
         profiles:
           uptime-profile:
@@ -71,7 +71,7 @@ suites:
         reporter: json-file
         json_file:
           location: /tmp/test/14versioned-centos-report.json
-      audit-artifactory:
+      audit_artifactory:
         cache_dir: /tmp/test
         profiles:
           uptime-profile:
@@ -95,7 +95,7 @@ suites:
         reporter: json-file
         json_file:
           location: /tmp/test/14latest-centos-report.json
-      audit-artifactory:
+      audit_artifactory:
         cache_dir: /tmp/test
         profiles:
           uptime-profile:

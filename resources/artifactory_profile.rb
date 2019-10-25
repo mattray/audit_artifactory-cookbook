@@ -2,18 +2,20 @@ resource_name :artifactory_profile
 
 property :artifact, String, name_property: true
 property :base_url, String, required: true
-property :group, String, required: true
 property :repo, String, required: true
+property :group, String, required: true
 property :version, String, default: 'latest'
+property :api_key, String
 
 action :install do
+  artifact = new_resource.artifact
   base_url = new_resource.base_url.chomp('/') # strip trailing /
   repo = new_resource.repo
   group = new_resource.group
-  artifact = new_resource.artifact
   version = new_resource.version
+  api_key = new_resource.api_key
 
-  cache_dir = node['audit-artifactory']['cache_dir']
+  cache_dir = node['audit_artifactory']['cache_dir']
   directory cache_dir
 
   # get the version of the latest
@@ -30,6 +32,8 @@ action :install do
   # download the artifact
   remote_file local_path do
     source remote_url
+    headers({ "X-JFrog-Art-Api" => api_key })
+    # headers( "Authorization"=>"Basic #{ Base64.encode64("#{username}:#{password}").gsub("\n", "") }" )
     mode '0600'
     action :create
   end

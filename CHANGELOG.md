@@ -8,23 +8,15 @@ Initial release.
 
 # 0.2.0
 
-* Rename to audit_artifactory. Attributes are unchanged.
+* Rename to audit_artifactory and updated attributes to reflect
+* Switched to Chef::HTTP for better SSL management
+* added tests for versioned and latest
 
-
-TODO:
-Right now compliance profiles are expected to end with `.tgz`, we'll add support for `.tar.gz` and .`zip` soon.
-
-Handle non-Artifactory profiles same as audit cookbook. Pass-through to node['audit']['profiles']
-
-Check for changes.
-
-Download directly given version
-
-if using 'latest' need to have repo organized properly
-
-support for
+test for
 - unprivileged
 - API credentials
 - user/password
+
+Right now compliance profiles are expected to end with `.tgz`, we'll add support for `.tar.gz` and .`zip` soon.
 
 - inspec_cron support -> by way of path sources? converting attributes into the right namespace?

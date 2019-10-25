@@ -4,8 +4,8 @@
 #
 
 # iterate over hash of attributes
-node['audit-artifactory']['profiles'].keys.each do |name|
-  profile = node['audit-artifactory']['profiles'][name]
+node['audit_artifactory']['profiles'].keys.each do |name|
+  profile = node['audit_artifactory']['profiles'][name]
 
   artifactory_profile name do
     base_url profile['base_url']

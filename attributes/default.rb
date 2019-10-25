@@ -1,7 +1,7 @@
-default['audit-artifactory']['profiles'] = {}
-default['audit-artifactory']['user'] = nil
-default['audit-artifactory']['password'] = nil
-default['audit-artifactory']['api_key'] = nil
+default['audit_artifactory']['profiles'] = {}
+default['audit_artifactory']['user'] = nil
+default['audit_artifactory']['password'] = nil
+default['audit_artifactory']['api_key'] = nil
 
-default['audit-artifactory']['cache_dir'] = "#{Chef::Config['file_cache_path']}/audit-artifactory"
+default['audit_artifactory']['cache_dir'] = "#{Chef::Config['file_cache_path']}/audit_artifactory"
 default['audit']['profiles'] = {} # required for writing profiles to the audit cookbook

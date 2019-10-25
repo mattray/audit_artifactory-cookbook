@@ -1,16 +1,20 @@
 # InSpec test for recipe audit_artifactory::default
 
-# The InSpec reference, with examples and extensive documentation, can be
-# found at http://inspec.io/docs/reference/resources/
+profile = attribute('profile')
+json_file = attribute('json_file')
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
-  end
+describe file(profile) do
+  it { should exist }
+  its('size') { should > 4600 }
+  its('size') { should < 4800 }
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+describe file(json_file) do
+  it { should exist }
+end
+
+describe json(json_file) do
+  its(["profiles", 0, "name"]) { should eq "uptime" }
+  its(["profiles", 0, "controls", 0, "results", 0, "status"]) { should eq "passed" }
+  its(["profiles", 0, "controls", 1, "results", 0, "status"]) { should eq "failed" }
 end

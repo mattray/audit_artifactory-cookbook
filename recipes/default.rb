@@ -7,13 +7,11 @@
 node['audit-artifactory']['profiles'].keys.each do |name|
   profile = node['audit-artifactory']['profiles'][name]
 
-  version = profile['version'] ? profile['version'] : 'latest'
-
   artifactory_profile name do
     base_url profile['base_url']
     group profile['group']
     repo profile['repo']
-    version version
+    version profile['version']
   end
 end
 

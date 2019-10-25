@@ -27,10 +27,11 @@ suites:
         json_file:
           location: /tmp/test/15versioned-centos-report.json
       audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
         cache_dir: /tmp/test
         profiles:
           uptime-profile:
-            base_url: http://10.0.0.46:8081/artifactory
             repo: test-repo
             group: testgroup
             version: 0.1.0
@@ -49,10 +50,11 @@ suites:
         json_file:
           location: /tmp/test/15latest-centos-report.json
       audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
         cache_dir: /tmp/test
         profiles:
           uptime-profile:
-            base_url: http://10.0.0.46:8081/artifactory
             repo: test-repo
             group: testgroup
     verifier:
@@ -72,10 +74,11 @@ suites:
         json_file:
           location: /tmp/test/14versioned-centos-report.json
       audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
         cache_dir: /tmp/test
         profiles:
           uptime-profile:
-            base_url: http://10.0.0.46:8081/artifactory
             repo: test-repo
             group: testgroup
             version: 0.1.0
@@ -96,10 +99,11 @@ suites:
         json_file:
           location: /tmp/test/14latest-centos-report.json
       audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
         cache_dir: /tmp/test
         profiles:
           uptime-profile:
-            base_url: http://10.0.0.46:8081/artifactory
             repo: test-repo
             group: testgroup
     verifier:

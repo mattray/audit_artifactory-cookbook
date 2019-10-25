@@ -11,6 +11,7 @@ Initial release.
 * Rename to audit_artifactory and updated attributes to reflect
 * Switched to Chef::HTTP for better SSL management
 * added tests for versioned and latest
+* moved URL to ['audit_artifactory']['base_url'] out of the individual profiles
 
 test for
 - unprivileged

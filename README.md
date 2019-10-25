@@ -1,8 +1,8 @@
 # audit_artifactory
 
-This wraps the [Audit](https://github.com/chef-cookbooks/audit) cookbook and interacts with Artifactory's REST API. The name of your compliance profile artifact is the key for the hash of attributes.
+This wraps the [Audit](https://github.com/chef-cookbooks/audit) cookbook and interacts with Artifactory's REST API. You will need to provide the base URL for the Artifactory instance and the name of your compliance profile artifact is the key for the hash of attributes.
 
-    node['audit_artifactory']['profiles']['test-inspec']['base_url'] = 'http://ec2-13-211-219-25.ap-southeast-2.compute.amazonaws.com:8081/artifactory'
+    node['audit_artifactory']['base_url'] = 'http://artifactory.example.com:8081/artifactory'
     node['audit_artifactory']['profiles']['test-inspec']['group'] = 'testgroup'
     node['audit_artifactory']['profiles']['test-inspec']['repo'] = 'inspecpoc'
     node['audit_artifactory']['profiles']['test-inspec']['version'] = '1.0.1'
@@ -25,18 +25,18 @@ Depending on how your Artifactory instance is configured, you may interact with 
 
 Anonymous access is supported. This is set in Artifactory through the tab `Admin` -> `Security Configuration` -> `Allow Anonymous Access`.
 
-## Password
-
-If authentication is required you may use your user and password to access artifacts. Set the following attributes accordingly:
-
-    node['audit_artifactory']['user'] = 'USER'
-    node['audit_artifactory']['password'] = 'PASSWORD'
-
 ## API Key
 
 The preferred method for authenticating with the API is to use an API Key. This is configured under `User Profile` -> `Authentication Settings`. Copy this value and set it with the following attribute:
 
     node['audit_artifactory']['api_key'] = 'AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE'
+
+## User/Password
+
+If authentication is required you may use your user and password to access artifacts. Set the following attributes accordingly:
+
+    node['audit_artifactory']['user'] = 'USER'
+    node['audit_artifactory']['password'] = 'PASSWORD'
 
 # Configuring Repositories
 

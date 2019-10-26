@@ -20,7 +20,7 @@ action :install do
 
   # get the version of the latest
   if version.eql?('latest')
-    version = Chef::HTTP.new(base_url).get("/api/search/latestVersion?g=#{group}&a=#{artifact}&repos=#{repo}")
+    version = Chef::HTTP.new(base_url).get("/api/search/latestVersion?g=#{group}&a=#{artifact}&repos=#{repo}", headers = { "X-JFrog-Art-Api" => api_key })
   end
 
   remote_url = "#{base_url}/#{repo}/#{group}/#{artifact}/#{artifact}-#{version}.tgz"

@@ -1,13 +1,15 @@
 ---
 driver:
   name: vagrant
+  synced_folders:
+      - ['test/tmp', '/tmp/test', 'create: true', owner: "root", group: "root"]
 
 provisioner:
   name: chef_zero
   always_update_cookbooks: true
+  chef_license: accept
   product_name: chef
-  product_version: 14.12.9
-  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
+  product_version: 15
 
 verifier:
   name: inspec
@@ -16,9 +18,187 @@ platforms:
   - name: centos-7
 
 suites:
-  - name: default
+  - name: 15-none-versioned
     run_list:
-      - recipe[audit-artifactory::default]
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/15-none-versioned-centos-report.json
+      audit_artifactory:
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+            version: 0.1.0
     verifier:
       inspec_tests:
         - test/integration/default
+      attributes:
+        json_file: /tmp/test/15-none-versioned-centos-report.json
+        profile: /tmp/test/uptime-profile-0.1.0.tgz
+  - name: 15-none-latest
+    run_list:
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/15-none-latest-centos-report.json
+      audit_artifactory:
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+    verifier:
+      inspec_tests:
+        - test/integration/default
+      attributes:
+        json_file: /tmp/test/15-none-latest-centos-report.json
+        profile: /tmp/test/uptime-profile-0.2.0.tgz
+  - name: 15-api-versioned
+    run_list:
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/15-api-versioned-centos-report.json
+      audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+            version: 0.1.0
+    verifier:
+      inspec_tests:
+        - test/integration/default
+      attributes:
+        json_file: /tmp/test/15-api-versioned-centos-report.json
+        profile: /tmp/test/uptime-profile-0.1.0.tgz
+  - name: 15-api-latest
+    run_list:
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/15-api-latest-centos-report.json
+      audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+    verifier:
+      inspec_tests:
+        - test/integration/default
+      attributes:
+        json_file: /tmp/test/15-api-latest-centos-report.json
+        profile: /tmp/test/uptime-profile-0.2.0.tgz
+  - name: 14-none-versioned
+    provisioner:
+      product_version: 14
+    run_list:
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/14-none-versioned-centos-report.json
+      audit_artifactory:
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+            version: 0.1.0
+    verifier:
+      inspec_tests:
+        - test/integration/default
+      attributes:
+        json_file: /tmp/test/14-none-versioned-centos-report.json
+        profile: /tmp/test/uptime-profile-0.1.0.tgz
+  - name: 14-none-latest
+    provisioner:
+      product_version: 14
+    run_list:
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/14-none-latest-centos-report.json
+      audit_artifactory:
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+    verifier:
+      inspec_tests:
+        - test/integration/default
+      attributes:
+        json_file: /tmp/test/14-none-latest-centos-report.json
+        profile: /tmp/test/uptime-profile-0.2.0.tgz
+  - name: 14-api-versioned
+    provisioner:
+      product_version: 14
+    run_list:
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/14-api-versioned-centos-report.json
+      audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+            version: 0.1.0
+    verifier:
+      inspec_tests:
+        - test/integration/default
+      attributes:
+        json_file: /tmp/test/14-api-versioned-centos-report.json
+        profile: /tmp/test/uptime-profile-0.1.0.tgz
+  - name: 14-api-latest
+    provisioner:
+      product_version: 14
+    run_list:
+      - recipe[audit_artifactory::default]
+    attributes:
+      audit:
+        reporter: json-file
+        json_file:
+          location: /tmp/test/14-api-latest-centos-report.json
+      audit_artifactory:
+        api_key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+        base_url: http://10.0.0.46:8081/artifactory
+        cache_dir: /tmp/test
+        profiles:
+          uptime-profile:
+            repo: test-repo
+            group: testgroup
+    verifier:
+      inspec_tests:
+        - test/integration/default
+      attributes:
+        json_file: /tmp/test/14-api-latest-centos-report.json
+        profile: /tmp/test/uptime-profile-0.2.0.tgz

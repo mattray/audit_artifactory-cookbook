@@ -1,19 +1,18 @@
 #
-# Cookbook:: audit-artifactory
+# Cookbook:: audit_artifactory
 # Recipe:: default
 #
 
 # iterate over hash of attributes
-node['audit-artifactory']['profiles'].keys.each do |name|
-  profile = node['audit-artifactory']['profiles'][name]
-
-  version = profile['version'] ? profile['version'] : 'latest'
+node['audit_artifactory']['profiles'].keys.each do |name|
+  profile = node['audit_artifactory']['profiles'][name]
 
   artifactory_profile name do
-    base_url profile['base_url']
+    base_url node['audit_artifactory']['base_url']
     group profile['group']
     repo profile['repo']
-    version version
+    version profile['version']
+    api_key node['audit_artifactory']['api_key']
   end
 end
 

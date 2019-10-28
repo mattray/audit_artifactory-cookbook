@@ -8,8 +8,8 @@ chef_version '>= 14.0'
 
 depends 'audit', '~> 7.6.0'
 
-issues_url       'https://github.com/mattray/audit_artifactory_cookbook/issues'
-source_url       'https://github.com/mattray/audit_artifactory_cookbook'
+issues_url       'https://github.com/mattray/audit_artifactory-cookbook/issues'
+source_url       'https://github.com/mattray/audit_artifactory-cookbook'
 
 supports         'redhat'
 supports         'centos'

@@ -31,13 +31,6 @@ The preferred method for authenticating with the API is to use an API Key. This 
 
     node['audit_artifactory']['api_key'] = 'AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE'
 
-## User/Password
-
-If authentication is required you may use your user and password to access artifacts. Set the following attributes accordingly:
-
-    node['audit_artifactory']['user'] = 'USER'
-    node['audit_artifactory']['password'] = 'PASSWORD'
-
 # Configuring Repositories
 
 When setting up the Artifactory repository to hold your compliance profiles, you will need to use the following settings when creating your repository if you want to be able to use the APIs. When creating a new `Local Repository`, choose `Generic`, and set your `Repository Key` accordingly. When you go to the `Artifacts` tab to `Deploy` artifacts, you will need to set the `Target Path` to
@@ -50,20 +43,18 @@ When setting up the Artifactory repository to hold your compliance profiles, you
 
 # Testing
 
-docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-pro:latest
-change the default password from 'password'
+These were the shell commands used to download and test API interactions with Artifactory Pro after getting a trial license for testing:
+
+    docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-pro:latest
 
 API key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
 password: 'httplocalhost8081artifactory'
 
-curl -O "http://localhost:8081/artifactory/test-repo/testgroup/uptime-profile/uptime-profile-0.1.0.tgz"
-curl "http://localhost:8081/artifactory/api/search/latestVersion?g=testgroup&a=uptime-profile&repos=test-repo"
+    curl -O "http://localhost:8081/artifactory/test-repo/testgroup/uptime-profile/uptime-profile-0.1.0.tgz"
+    curl "http://localhost:8081/artifactory/api/search/latestVersion?g=testgroup&a=uptime-profile&repos=test-repo"
 
-curl -umattray:httplocalhost8081artifactory -O "http://localhost:8081/artifactory/test-repo/testgroup/uptime-profile/uptime-profile-0.1.0.tgz"
-curl -umattray:httplocalhost8081artifactory "http://localhost:8081/artifactory/api/search/latestVersion?g=testgroup&a=uptime-profile&repos=test-repo"
-
-curl -H 'X-JFrog-Art-Api:AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE' -O "http://localhost:8081/artifactory/test-repo/testgroup/uptime-profile/uptime-profile-0.1.0.tgz"
-curl -H 'X-JFrog-Art-Api:AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE' "http://localhost:8081/artifactory/api/search/latestVersion?g=testgroup&a=uptime-profile&repos=test-repo"
+    curl -H 'X-JFrog-Art-Api:AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE' -O "http://localhost:8081/artifactory/test-repo/testgroup/uptime-profile/uptime-profile-0.1.0.tgz"
+    curl -H 'X-JFrog-Art-Api:AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE' "http://localhost:8081/artifactory/api/search/latestVersion?g=testgroup&a=uptime-profile&repos=test-repo"
 
 # License and Authors
 

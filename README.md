@@ -19,17 +19,17 @@ API access is restricted to Artifactory Pro, but you may use the custom resource
 
 # Authentication
 
-Depending on how your Artifactory instance is configured, you may interact with your repositories 3 different ways:
-
-## No Authentication
-
-Anonymous access is supported. This is set in Artifactory through the tab `Admin` -> `Security Configuration` -> `Allow Anonymous Access`.
+Depending on how your Artifactory instance is configured, you may interact with your repositories with or without authentication:
 
 ## API Key
 
 The preferred method for authenticating with the API is to use an API Key. This is configured under `User Profile` -> `Authentication Settings`. Copy this value and set it with the following attribute:
 
     node['audit_artifactory']['api_key'] = 'AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE'
+
+## No Authentication
+
+Anonymous access is supported. This is set in Artifactory through the tab `Admin` -> `Security Configuration` -> `Allow Anonymous Access`.
 
 # Configuring Repositories
 
@@ -47,8 +47,8 @@ These were the shell commands used to download and test API interactions with Ar
 
     docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-pro:latest
 
-API key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
-password: 'httplocalhost8081artifactory'
+    API key: AKCp5e2gMx8TtJNDtrsuPq7Jz24Rqjkjf1d1iiy1GuEjmdsY8ghxFGgehZcK3UGNgy5TxHWdE
+    password: 'httplocalhost8081artifactory'
 
     curl -O "http://localhost:8081/artifactory/test-repo/testgroup/uptime-profile/uptime-profile-0.1.0.tgz"
     curl "http://localhost:8081/artifactory/api/search/latestVersion?g=testgroup&a=uptime-profile&repos=test-repo"

@@ -6,7 +6,7 @@ This file is used to list changes made in each version of the audit_artifactory 
 
 Initial release.
 
-# 0.2.0
+# 0.4.0
 
 * Rename to audit_artifactory and updated attributes to reflect
 * Added support for API key authentication

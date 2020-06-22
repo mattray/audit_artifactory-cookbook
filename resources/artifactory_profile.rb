@@ -1,4 +1,5 @@
 resource_name :artifactory_profile
+provides :artifactory_profile
 
 property :artifact, String, name_property: true
 property :base_url, String, required: true

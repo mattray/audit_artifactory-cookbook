@@ -14,6 +14,10 @@ Initial release.
 * added tests for versioned and latest
 * moved URL to ['audit_artifactory']['base_url'] out of the individual profiles
 
+# 0.4.1
+
+* updated custom resources to account for [breaking Custom Resource change in Chef 16.2](https://discourse.chef.io/t/chef-infra-client-16-2-released/17284)
+
 # Backlog
 * Right now compliance profiles are expected to end with `.tgz`, we'll add support for `.tar.gz` and .`zip` soon.
 * inspec_cron support -> by way of path sources? converting attributes into the right namespace?
